@@ -13,6 +13,10 @@ module Legato
       raw_attributes.map {|attributes| @instance_klass.new(attributes)}
     end
 
+    def data_types
+      headers.map {|header| Hash[Legato.from_ga_string(header['name']), header['dataType']]}
+    end
+
     def total_results
       data["totalResults"]
     end
